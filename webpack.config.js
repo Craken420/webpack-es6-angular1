@@ -5,7 +5,10 @@ const path = require('path'),
       TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    entry: './app/app.js',
+    entry: [
+        '@babel/polyfill',
+        './app/app.js'
+    ],
     mode: 'development',
     output: {
         path: path.join(__dirname, '/wap'),
