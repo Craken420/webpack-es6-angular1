@@ -6,7 +6,8 @@ const path = require('path'),
 
 module.exports = {
     entry: [
-        '@babel/polyfill',
+        require.resolve('core-js/stable'),
+        require.resolve('regenerator-runtime/runtime'),
         './app/app.js'
     ],
     mode: 'development',
