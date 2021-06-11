@@ -1,7 +1,9 @@
 const path = require('path'),
+      webpack = require('webpack'),
       MiniCssExtractPlugin = require('mini-css-extract-plugin'),
       HtmlPlugin = require('html-webpack-plugin'),
       TerserPlugin = require('terser-webpack-plugin');
+
 module.exports = {
     entry: './app/app.js',
     mode: 'development',
@@ -44,6 +46,7 @@ module.exports = {
                 compress: { warnings: false },
                 sourceMap: true
             }
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin(), // Reemplazo del módulo en caliente
     ]
 }
