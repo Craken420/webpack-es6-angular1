@@ -6,5 +6,14 @@ module.exports = {
         filename: '[name].js',
         chunkFilename: '[id].build.js?[chunkhash]',
         clean: true
-    }
+    },
+    module: {
+        rules: [
+            {
+                test: /\.js$/i,
+                use: ['babel-loader'],
+                exclude: /node_modules/
+            }
+        ]
+    },
 }
