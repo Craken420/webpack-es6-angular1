@@ -11,8 +11,14 @@ module.exports = {
         './app/app.js'
     ],
     mode: 'development',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        compress: true,
+        port: 9010,
+        publicPath: '/js'
+    },
     output: {
-        path: path.join(__dirname, '/wap'),
+        path: path.join(__dirname, 'dist/js'),
         filename: '[name].js',
         chunkFilename: '[id].build.js?[chunkhash]',
         clean: true
@@ -41,17 +47,19 @@ module.exports = {
     },
     plugins: [
         new HtmlPlugin({
-            filename: 'index.html',
+            filename: '../index.html',
             template: './app/index.html'
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '../css/[name]-[chunkhash].css'
+        }),
         new TerserPlugin({
             terserOptions: {
                 compress: { warnings: false },
                 sourceMap: true
             }
         }),
-        new webpack.HotModuleReplacementPlugin(), // Reemplazo del módulo en caliente
+        new webpack.HotModuleReplacementPlugin()
     ],
     optimization: {
         splitChunks: {
