@@ -63,3 +63,10 @@ POR:
             }
         }
     }
+
+-----------------------------------------------------------------------------------
+Reemplazar:
+    webpack.NamedModulesPlugin();
+CON:
+    namedModules: true //-> Fue eliminado en webpack 5
+    moduleIds: 'named',

@@ -15,6 +15,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         compress: true,
         port: 9010,
+        hot: true,
         publicPath: '/js'
     },
     output: {
@@ -59,9 +60,10 @@ module.exports = {
                 sourceMap: true
             }
         }),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
     ],
     optimization: {
+        moduleIds: 'named',
         splitChunks: {
             cacheGroups: {
                 'commons': {
