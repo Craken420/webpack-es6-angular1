@@ -52,5 +52,15 @@ module.exports = {
             }
         }),
         new webpack.HotModuleReplacementPlugin(), // Reemplazo del módulo en caliente
-    ]
+    ],
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                'commons': {
+                    chunks: 'all',
+                    name: 'commons'
+                },
+            }
+        }
+    }
 }

@@ -1,0 +1,65 @@
+Reemplazar:
+    new webpack.optimize.CommonsChunkPlugin('common', 'common.js')
+POR:
+    -----------------------------------------------------------------------
+    // CONFIGURACIÓN BASICA
+    -----------------------------------------------------------------------
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: "vendor",
+                    chunks: "all"
+                }
+            }
+        }
+    }
+    -----------------------------------------------------------------------
+    // CONFIGURACIÓN MEDIUM
+    -----------------------------------------------------------------------
+    optimization: {
+        runtimeChunk: "single", // enable "runtime" chunk
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    name: 'vendor',
+                    chunks: chunk => chunk.name == 'main',
+                    reuseExistingChunk: true,
+                    priority: 1,
+                    test: module =>
+                    /[\\/]node_modules[\\/]/.test(module.context),
+                    minChunks: 1,
+                    minSize: 0,
+                }
+            }
+        }
+    }
+    
+    -----------------------------------------------------------------------
+    // CONFIGURACIÓN AVANZADA
+    -----------------------------------------------------------------------
+    cacheGroups: {
+        vendors: {
+            name: 'vendors',
+            chunks: 'all',
+            reuseExistingChunk: true,
+            priority: 1,
+            enforce: true,
+            test(module, chunks) {
+                const name = module.nameForCondition && module.nameForCondition();
+                return chunks.some(chunk => {
+                    return chunk.name === 'main' && /[\\/]node_modules[\\/]/.test(name);
+                });
+            }
+        },
+        secondary: {
+            name: 'secondary',
+            chunks: 'all',
+            priority: 2,
+            enforce: true,
+            test(module, chunks) {
+                return chunks.some(chunk => chunk.name === 'secondary');
+            }
+        }
+    }
