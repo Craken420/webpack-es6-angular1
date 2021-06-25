@@ -1,7 +1,7 @@
 export default class HomeCtrl {
-    constructor ($scope) {
+    constructor ($scope, HomeService) {
         'ngInject';
-        this.greet = 'Hi, Welcome';
-        $scope.header = 'Header application';
+        this.greet = HomeService.getGreet();
+        $scope.header = HomeService.getHeader();
     }
 }
