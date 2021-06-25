@@ -8,3 +8,7 @@ if (module.hot) { // Indicar el uso HotModuleReplacement
 }
 
 angular.module('app', [uirouter, routing])
+.config(function ($locationProvider){
+    'ngInject';
+    $locationProvider.html5Mode(true);
+})
