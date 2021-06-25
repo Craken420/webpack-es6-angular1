@@ -1,12 +1,10 @@
 import './style.css';
 import angular from 'angular';
+import uirouter from 'angular-ui-router';
+import routing from './routes';
 
 if (module.hot) { // Indicar el uso HotModuleReplacement
     module.hot.accept();
 }
 
-angular.module('app', [])
-.controller('Ctrl', function ($scope) {
-    'ngInject';
-    $scope.header = 'Header application'
-})
+angular.module('app', [uirouter, routing])
