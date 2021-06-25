@@ -4,7 +4,7 @@ export default function routing ($urlRouterProvider, $stateProvider) {
     'ngInject';
     $stateProvider.state('home', {
         url: '/',
-        template: '<h1 class="main">{{header}}</h1><h2>{{Ctrl.greet}}</h2>',
+        template: require('./home.html').default,
         controller: HomeCtrl,
         controllerAs: 'Ctrl'
     })
