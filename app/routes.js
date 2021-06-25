@@ -1,10 +1,11 @@
-routing.$inject = ['$urlRouterProvider', '$stateProvider'];
 export default function routing ($urlRouterProvider, $stateProvider) {
+    'ngInject';
     $stateProvider.state('home', {
         url: '/',
-        template: '<h1 class="main">{{Ctrl.header}}</h1>',
-        controller: function() {
-           this.header = 'Header application';
+        template: '<h1 class="main">{{header}}</h1>',
+        controller: function($scope) {
+            'ngInject';
+            $scope.header = 'Header application';
         },
         controllerAs: 'Ctrl'
     })
