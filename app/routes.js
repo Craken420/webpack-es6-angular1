@@ -1,12 +1,4 @@
-import HomeCtrl from './controller'
-
-export default function routing ($urlRouterProvider, $stateProvider) {
+export default function routing ($urlRouterProvider) {
     'ngInject';
-    $stateProvider.state('home', {
-        url: '/',
-        template: require('./home.html').default,
-        controller: HomeCtrl,
-        controllerAs: 'Ctrl'
-    })
     $urlRouterProvider.otherwise('/');
 }
