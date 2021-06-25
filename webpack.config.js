@@ -42,7 +42,7 @@ module.exports = {
             },
             {
                 test: /\.html$/i,
-                use: 'raw-loader',
+                use: 'html-loader',
                 exclude: /node_modules/
             }
         ]

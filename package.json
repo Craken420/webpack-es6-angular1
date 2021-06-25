@@ -17,6 +17,7 @@
     "babel-plugin-angularjs-annotate": "^0.10.0",
     "core-js": "^3.14.0",
     "css-loader": "^5.2.6",
+    "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "ng-annotate-loader": "^0.7.0",
